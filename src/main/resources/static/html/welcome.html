@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Management</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/welcome.css">
+</head>
+<body>
+
+<nav>
+    <h1>Sistema de Gestión Inmobiliaria</h1>
+</nav>
+
+<div class="container">
+
+    <div class="form-container">
+        <h2>Agregar o Actualizar Propiedad</h2>
+        <form id="deliveryForm">
+            <label for="id">ID (para Actualizar/Eliminar):</label>
+            <input type="number" id="id" name="id" placeholder="Dejar vacío para agregar nueva propiedad">
+
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="price">Precio:</label>
+            <input type="text" id="price" name="price" required>
+
+            <label for="size">Tamaño:</label>
+            <input type="text" id="size" name="size" required>
+
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <button type="submit">Agregar / Actualizar Propiedad</button>
+        </form>
+
+        <button id="deleteDeliveryBtn">Eliminar Propiedad</button>
+    </div>
+
+    <div class="list-container">
+        <h2>Propiedades</h2>
+
+        <table id="deliveryTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Dirección</th>
+                <th>Precio</th>
+                <th>Tamaño</th>
+                <th>Descripción</th>
+            </tr>
+            </thead>
+            <tbody id="deliveryTableBody">
+            <!-- Las propiedades se llenarán aquí -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="../js/welcome.js"></script>
+</body>
+</html>

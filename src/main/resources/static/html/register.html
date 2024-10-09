@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+<body style="background-color: #8fc4b7;">
+
+<section class="h-100 h-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-10 col-xl-8"> <!-- Aumenta el tamaño del formulario -->
+                <div class="card rounded-3">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                         class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">Registro de Usuario</h3>
+
+                        <form class="px-md-5"> <!-- Añade más espacio horizontal -->
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="text" id="name" class="form-control" required />
+                                <label class="form-label" for="name">Nombre</label>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="text" id="lastName" class="form-control" required />
+                                <label class="form-label" for="lastName">Apellido</label>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="email" id="email" class="form-control" required />
+                                <label class="form-label" for="email">Correo Electrónico</label>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="password" id="password" class="form-control" required />
+                                <label class="form-label" for="password">Contraseña</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-lg mb-3 w-100">Registrar</button> <!-- Botón de Registro más ancho -->
+
+                            <button type="button" onclick="redirectToLogin()" class="btn btn-outline-primary btn-lg w-100">Logearse</button> <!-- Botón de Logearse -->
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+<script src="../js/register.js"></script>
+</body>
+</html>
