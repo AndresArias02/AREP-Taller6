@@ -76,7 +76,7 @@ document.getElementById("deliveryForm").addEventListener("submit", function(even
         .catch(error => console.error("Error updating delivery:", error));
     } else {
 
-        fetch("/api/properties", {
+        fetch("https://backtaller6.duckdns.org:443/api/properties", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

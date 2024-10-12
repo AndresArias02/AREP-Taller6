@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch("https://backtaller6.duckdns.org:443/auth/register", {
+            const response = fetch("https://backtaller6.duckdns.org:443/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
