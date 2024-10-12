@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
 
-        fetch("/auth/login", {
+        fetch("https://backtaller6.duckdns.org:443/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

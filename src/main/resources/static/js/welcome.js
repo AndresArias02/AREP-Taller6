@@ -1,6 +1,6 @@
 
 function fetchDeliveries() {
-    fetch("/api/properties")
+    fetch("https://backtaller6.duckdns.org:443/api/properties")
         .then(response => response.json())
         .then(data => {
             deliveryTableBody.innerHTML = "";
@@ -57,7 +57,7 @@ document.getElementById("deliveryForm").addEventListener("submit", function(even
 
     if (id) {
 
-        fetch(`/api/properties/${id}`, {
+        fetch(`https://backtaller6.duckdns.org:443/api/properties/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -98,7 +98,7 @@ document.getElementById("deleteDeliveryBtn").addEventListener("click", function(
     const id = document.getElementById("id").value;
 
     if (id) {
-        fetch(`/api/properties/${id}`, {
+        fetch(`https://backtaller6.duckdns.org:443/api/properties/${id}`, {
             method: "DELETE"
         })
         .then(response => {

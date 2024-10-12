@@ -14,6 +14,7 @@ import java.util.List;
  * @author: Andrés Arias
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/api")
 public class PropertiesController {
 
