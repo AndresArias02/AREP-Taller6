@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = fetch("https://backtaller6.duckdns.org:443/auth/register", {
+            const response = await fetch("https://backtaller6.duckdns.org:443/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.ok) {
                 const result = await response.text();
                 alert(result);
+                redirectToLogin();
             } else {
                 const error = await response.text();
                 alert(`Error: ${error}`);
