@@ -369,7 +369,7 @@ Para instalar y ejecutar esta aplicación, sigue los siguientes pasos:
 
     ```bash
 
-   docker-compose up --build
+   docker-compose up -d
    mvn clean compile
    mvn exec:java '-Dexec.mainClass=edu.eci.arep.PropertiesApplication'
    
