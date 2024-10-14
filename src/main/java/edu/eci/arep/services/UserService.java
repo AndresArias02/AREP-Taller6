@@ -49,13 +49,23 @@ public class UserService {
         return false;
     }
 
-
-    private static String generatePasswordHash(String password) throws NoSuchAlgorithmException {
+    /**
+     * Method to generate a password hash
+     * @param password
+     * @return password hash
+     * @throws NoSuchAlgorithmException if the algorithm is not supported
+     */
+    public static String generatePasswordHash(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
         return bytesToHex(encodedhash);
     }
 
+    /***
+     * Method to convert a byte array to a hexadecimal string
+     * @param hash byte array to convert
+     * @return hexadecimal string
+     */
     private static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
         for (byte b : hash) {

@@ -1,12 +1,16 @@
 import edu.eci.arep.models.Properties;
+import edu.eci.arep.models.User;
 import edu.eci.arep.repositorys.PropertiesRepository;
+import edu.eci.arep.repositorys.UserRepository;
 import edu.eci.arep.services.PropertiesService;
+import edu.eci.arep.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -14,26 +18,34 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
- * Test class for PropertiesService
- * @author Andrés Arias
+ * Test class for PropertiesService and UserService
+ * Author: Andrés Arias
  */
 class PropertiesTest {
 
     @Mock
     private PropertiesRepository propertiesRepository;
 
+    @Mock
+    private UserRepository userRepository;  // Mock para UserRepository
+
     @InjectMocks
     private PropertiesService propertiesService;
 
+    @InjectMocks
+    private UserService userService;  // Instancia de UserService
+
     private Properties properties;
+    private User user;
 
     /**
-     * Sets up the mocks and the Properties object
+     * Sets up the mocks and the Properties and User objects
      */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
         properties = new Properties(1L, "123 Main St", "10.00", "Large", "Food delivery");
+        user = new User(1L, "John", "Doe", "john.doe@example.com", "password");
     }
 
     /**
@@ -97,5 +109,38 @@ class PropertiesTest {
         propertiesService.deleteProperty(1L);
 
         verify(propertiesRepository, times(1)).deleteById(1L);
+    }
+
+    /**
+     * Tests the login method
+     */
+    @Test
+    void testLogin() throws NoSuchAlgorithmException {
+        // Set up the mock behavior
+        when(userRepository.existsByEmail(user.getEmail())).thenReturn(true);
+        when(userRepository.findByEmail(user.getEmail())).thenReturn(new User(1L, "John", "Doe", user.getEmail(), UserService.generatePasswordHash(user.getPassword())));
+
+        // Perform the login
+        boolean loginResult = userService.login(user);
+
+        // Verify that login is successful
+        assertTrue(loginResult);
+    }
+
+
+    /**
+     * Tests the register method
+     */
+    @Test
+    void testRegister() throws NoSuchAlgorithmException {
+        // Set up the mock behavior
+        when(userRepository.existsByEmail(user.getEmail())).thenReturn(false);
+
+        // Perform the registration
+        boolean registrationResult = userService.register(user);
+
+        // Verify that registration is successful
+        assertTrue(registrationResult);
+        verify(userRepository, times(1)).save(user);  // Verify save is called
     }
 }

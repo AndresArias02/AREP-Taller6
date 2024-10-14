@@ -1,6 +1,6 @@
 
 function fetchDeliveries() {
-    fetch("https://backtaller6.duckdns.org:443/api/properties")
+    fetch("/api/properties")
         .then(response => response.json())
         .then(data => {
             deliveryTableBody.innerHTML = "";
@@ -33,7 +33,7 @@ function fetchDeliveries() {
                 deliveryTableBody.appendChild(row);
             });
         })
-        .catch(error => console.error("Error fetching deliveries:", error));
+        .catch(error => console.error("Error fetching properties:", error));
 }
 
 
@@ -57,7 +57,7 @@ document.getElementById("deliveryForm").addEventListener("submit", function(even
 
     if (id) {
 
-        fetch(`https://backtaller6.duckdns.org:443/api/properties/${id}`, {
+        fetch(`/api/properties/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -66,17 +66,17 @@ document.getElementById("deliveryForm").addEventListener("submit", function(even
         })
         .then(response => {
             if (response.ok) {
-                alert(`Delivery with ID: ${id} updated successfully!`);
+                alert(`Property with ID: ${id} updated successfully!`);
                 document.getElementById("deliveryForm").reset();
                 fetchDeliveries();
             } else {
                 alert(`Failed to update delivery with ID: ${id}`);
             }
         })
-        .catch(error => console.error("Error updating delivery:", error));
+        .catch(error => console.error("Error updating property:", error));
     } else {
 
-        fetch("https://backtaller6.duckdns.org:443/api/properties", {
+        fetch("/api/properties", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -85,11 +85,11 @@ document.getElementById("deliveryForm").addEventListener("submit", function(even
         })
         .then(response => response.json())
         .then(data => {
-            alert(`Delivery added with ID: ${data.id}`);
+            alert(`Property added with ID: ${data.id}`);
             document.getElementById("deliveryForm").reset();
             fetchDeliveries();
         })
-        .catch(error => console.error("Error adding delivery:", error));
+        .catch(error => console.error("Error adding property:", error));
     }
 });
 
@@ -98,7 +98,7 @@ document.getElementById("deleteDeliveryBtn").addEventListener("click", function(
     const id = document.getElementById("id").value;
 
     if (id) {
-        fetch(`https://backtaller6.duckdns.org:443/api/properties/${id}`, {
+        fetch(`/api/properties/${id}`, {
             method: "DELETE"
         })
         .then(response => {
@@ -107,11 +107,11 @@ document.getElementById("deleteDeliveryBtn").addEventListener("click", function(
                 document.getElementById("deliveryForm").reset();
                 fetchDeliveries();
             } else {
-                alert(`Failed to delete delivery with ID: ${id}`);
+                alert(`Failed to delete property with ID: ${id}`);
             }
         })
-        .catch(error => console.error("Error deleting delivery:", error));
+        .catch(error => console.error("Error deleting property:", error));
     } else {
-        alert("Please provide a valid ID to delete a delivery.");
+        alert("Please provide a valid ID to delete a property.");
     }
 });
