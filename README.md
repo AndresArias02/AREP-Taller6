@@ -377,7 +377,7 @@ Para instalar y ejecutar esta aplicación, sigue los siguientes pasos:
 
 3. **Abrir la aplicación en un navegador web:**
 
-   Navega a https://localhost:8080 para interactuar con la aplicación.
+   Navega a http://localhost:8080 para interactuar con la aplicación.
 
 ## Video de prueba de la aplicación subida en AWS en instancias EC2 y RDS
 
