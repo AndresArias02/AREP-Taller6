@@ -1,4 +1,4 @@
-# Taller 
+# Enterprise Architecture  
 
 ## Sistema de Gestión de Propiedades
 
